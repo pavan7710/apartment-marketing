@@ -1,11 +1,1 @@
-<div>
-  <h1>Hello, {{ title }}</h1>
-  <ul>
-    <li *ngFor="let apartment of apartmentList">
-      <h2>{{ apartment.apartment_name }}</h2>
-      <p>{{ apartment.city }}</p>
-      <p>{{ apartment.boq_emi }}</p>
-      <img [src]="apartment.primary_image" alt="{{ apartment.apartment_name }}">
-    </li>
-  </ul>
-</div>
+<app-apartment-table></app-apartment-table>

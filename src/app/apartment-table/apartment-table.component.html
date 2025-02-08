@@ -1,0 +1,14 @@
+<p>apartment-table works!</p>
+
+<app-dynamic-table
+    [tableColumns]= "columns"
+    [tableData] = "apartmentList"
+    [customTemplates] = "{'action' : buttonTemplate}"
+></app-dynamic-table>
+
+
+<ng-template #buttonTemplate let-value let-row="row" >
+    <button (click) = "onButtonClick(row)" >Process</button>
+</ng-template>
+
+

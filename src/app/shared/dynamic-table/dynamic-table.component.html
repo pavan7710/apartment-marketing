@@ -1,0 +1,23 @@
+<table>
+    <thead>
+        <tr>
+            <th *ngFor = "let data of  tableColumns" >{{data.header}}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor = "let row of tableData">
+            <td *ngFor = "let column of tableColumns">
+                <ng-container *ngIf ="customTemplates[column.field]; else defaultCell">
+                    <ng-container *ngTemplateOutlet="customTemplates[column.field] ; context : { $implicit : row[column.field] , row: row } " ></ng-container>
+                </ng-container>
+
+                <ng-template #defaultCell>
+                    {{row[column.field]}}
+                </ng-template>
+
+            </td>
+        </tr>
+    </tbody>
+
+</table>
