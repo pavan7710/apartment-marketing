@@ -37,6 +37,7 @@ describe('PostComponent', () => {
   // })
 
 
+  // two different ways of writing by using the native element and debug element
   it("should render the post title in the anchor element" , () => {
     const post: Post = {
       id : 1,
@@ -50,8 +51,6 @@ describe('PostComponent', () => {
      const a = postElement.querySelector('a')
      expect(a?.textContent).toContain(post.title)
 })
-
-
 it("should render the post title in the anchor element using debug element" , () => {
     const post: Post = {
       id : 1,
@@ -65,8 +64,6 @@ it("should render the post title in the anchor element using debug element" , ()
     const aElement: HTMLElement = postDebugElement.query(
       By.css('a')
     ).nativeElement
-
     expect(aElement.textContent).toContain(post.title)
 } )
-
 });
