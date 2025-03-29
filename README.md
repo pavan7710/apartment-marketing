@@ -29,3 +29,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Branches info
 
 learnNgrx =========> basic setup of ngrx by using conter example and selectors
+######
+learnNgrxEffects ==============> facing the error main.ts:8 TypeError: Cannot read properties of undefined (reading 'pipe')
+    at post.effects.ts:16:19
+    at <instance_members_initializer> (post.effects.ts:15:16)
+    at new _PostEffects (post.effects.ts:11:3)
+    at Object.PostEffects_Factory [as factory] (post.effects.ts:24:6)
+######
