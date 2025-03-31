@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store'
 
 @Component({
   selector: 'app-counter-controls',
@@ -8,6 +7,6 @@ import { Store } from '@ngrx/store'
 })
 export class CounterControlsComponent {
 
-  constructor(private store: Store) {}
+  constructor() {}
 
 }
