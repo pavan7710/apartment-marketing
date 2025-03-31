@@ -1,18 +1,31 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store'
+import { Component, OnInit  } from '@angular/core';
+import { select, Store } from '@ngrx/store'
 import { Observable  } from 'rxjs'
+import { ApiResponse } from '../services/apartmentservice.service';
+import { ApartmentState } from '../store/apartment/apartment.reducer';
+import { loadApartments } from '../store/apartment/apartment.action';
  
 @Component({
   selector: 'app-counter-output',
   templateUrl: './counter-output.component.html',
   styleUrl: './counter-output.component.scss'
 })
-export class CounterOutputComponent {
+export class CounterOutputComponent implements OnInit {
     // count$ : Observable<number>;
 
     // constructor(private store : Store<{counter : number}>){
     //   this.count$ = store.select(selectCount)
     // }
+
+    apartments$ : Observable<ApiResponse | null> 
+
+    constructor( private store: Store< { apartment : ApartmentState }  >  ) {
+      this.apartments$ = store.pipe(select(state => state.apartment.apartments))
+    }
+
+    ngOnInit(): void {
+      this.store.dispatch(loadApartments())
+    }
 
   
 }

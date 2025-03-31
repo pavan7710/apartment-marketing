@@ -8,6 +8,10 @@ import { CounterOutputComponent } from './counter-output/counter-output.componen
 import { CounterControlsComponent } from './counter-controls/counter-controls.component'
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { apartmentReducer } from './store/apartment/apartment.reducer';
+import { ApartmentserviceService } from './services/apartmentservice.service';
+import { ApartmentEffect } from './store/apartment/apartment.effects';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot({ apartment: apartmentReducer }),
+    EffectsModule.forRoot([ApartmentEffect])
   ],
-  providers: [],
+  providers: [ApartmentserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

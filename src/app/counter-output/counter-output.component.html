@@ -1,1 +1,8 @@
 <p>Counter Out put working</p>
+
+
+<div *ngIf = "apartments$ | async as apartments; else null" >
+    <div *ngFor = "let apartment of apartments.data.data">
+        <h2>{{ apartment.attributes.id }}</h2>
+    </div>
+</div>
