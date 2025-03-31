@@ -36,3 +36,5 @@ learnNgrxEffects ==============> facing the error main.ts:8 TypeError: Cannot re
     at new _PostEffects (post.effects.ts:11:3)
     at Object.PostEffects_Factory [as factory] (post.effects.ts:24:6)
 ######
+
+NgrxEffectsTwo =====> fetching apartment api by using ngrx and ngrx/effects --- all the errors are resolved
