@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core'
+import { inject, Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
-import { catchError, map, mergeMap, of } from 'rxjs'
+import {  of  } from 'rxjs'
+import {  mergeMap , map  , catchError, tap} from 'rxjs/operators'
 import { ApartmentserviceService } from '../../services/apartmentservice.service'
 import { loadApartments , loadApartmentsFailure , loadApartmentsSuccess } from './apartment.action'
 
@@ -10,20 +11,16 @@ import { loadApartments , loadApartmentsFailure , loadApartmentsSuccess } from '
 @Injectable()
 
 export class ApartmentEffect {
-   
+    private actions$ = inject(Actions);
+    private apartmentService =  inject(ApartmentserviceService)
     loadApartments$ = createEffect(() => 
         this.actions$.pipe(
             ofType(loadApartments),
+            tap(() => console.log('loadApartments action received in effect')),
             mergeMap(() => this.apartmentService.getApartments().pipe(
                 map(response => loadApartmentsSuccess({response})),
                 catchError(error => of(loadApartmentsFailure({error})))
             ))
         )
-    )
-
-
-    constructor (
-        private actions$ : Actions,
-        private apartmentService : ApartmentserviceService
-    ) {}
+    );
 }

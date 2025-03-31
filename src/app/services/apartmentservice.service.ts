@@ -36,4 +36,14 @@ export class ApartmentserviceService {
   getApartments() :  Observable<ApiResponse>  {
     return this.http.get<ApiResponse>(this.apiUrl)
   }
+
+  // getApartments(): Observable<ApiResponse> {
+  //   console.log('getApartments method called');
+  //   return this.http.get<ApiResponse>(this.apiUrl).pipe(
+  //     map((response) => {
+  //       console.log('API response:', response); // Log the API response
+  //       return response;
+  //     })
+  //   );
+  // }
 }
