@@ -1,14 +1,15 @@
 import { createReducer , on } from '@ngrx/store'
 import { loadApartments , loadApartmentsFailure , loadApartmentsSuccess } from './apartment.action'
-import { ApiResponse } from '../../services/apartmentservice.service'
+import { ApiResponse , ApartmentData } from '../../services/apartmentservice.service'
 
 
 export interface ApartmentState {
-    apartments : ApiResponse | null ;
+    apartments : any | null ;
     apartmentCount : number 
     apartmentUnids : string[];
     loading : boolean ;
-    error : any
+    error : any,
+    listData : ApartmentData[]
 }
 
 export const initialState : ApartmentState = {
@@ -16,7 +17,8 @@ export const initialState : ApartmentState = {
     apartmentCount : 0,
     apartmentUnids : [],
     loading : false,
-    error : null
+    error : null,
+    listData :  []
 }
 
 export const apartmentReducer = createReducer(
@@ -28,7 +30,8 @@ export const apartmentReducer = createReducer(
         apartmentCount : response['apartment count'],
         apartmentUnids : response.data.data.map(apartment => apartment.attributes.unid),
         loading : false,
-        error : null
+        error : null,
+        listData : response.data.data
     })),
     on(loadApartmentsFailure , ( state , { error } ) => ({
         ...state,

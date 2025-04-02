@@ -5,4 +5,8 @@
     <div *ngFor = "let apartment of apartments.data.data">
         <h2>{{ apartment.attributes.id }}</h2>
     </div>
+
+    <div *ngFor = "let data of listData$ | async" >
+        {{data.attributes.city}}
+    </div>
 </div>

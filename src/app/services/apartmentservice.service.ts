@@ -13,7 +13,7 @@ interface ApartmentAttributes {
   boq_emi : number
 }
 
-interface ApartmentData {
+export interface ApartmentData {
   id : string;
   type : string;
   attributes : ApartmentAttributes
@@ -33,17 +33,17 @@ export class ApartmentserviceService {
   private apiUrl = 'https://qa-marketing-api.arrivae.com/v1/apartments?page=1&city=&search=&per_page=&lifestage=&theme=&vr_link=false'
   constructor( private http: HttpClient ) { }
 
-  getApartments() :  Observable<ApiResponse>  {
-    return this.http.get<ApiResponse>(this.apiUrl)
-  }
-
-  // getApartments(): Observable<ApiResponse> {
-  //   console.log('getApartments method called');
-  //   return this.http.get<ApiResponse>(this.apiUrl).pipe(
-  //     map((response) => {
-  //       console.log('API response:', response); // Log the API response
-  //       return response;
-  //     })
-  //   );
+  // getApartments() :  Observable<ApiResponse>  {
+  //   return this.http.get<ApiResponse>(this.apiUrl)
   // }
+
+  getApartments(): Observable<ApiResponse> {
+    console.log('getApartments method called');
+    return this.http.get<ApiResponse>(this.apiUrl).pipe(
+      map((response) => {
+        console.log('API response:', response); // Log the API response
+        return response;
+      })
+    );
+  }
 }

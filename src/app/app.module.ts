@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { apartmentReducer } from './store/apartment/apartment.reducer';
 import { ApartmentserviceService } from './services/apartmentservice.service';
 import { ApartmentEffect } from './store/apartment/apartment.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 
 
 @NgModule({
@@ -25,7 +26,11 @@ import { ApartmentEffect } from './store/apartment/apartment.effects';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({ apartment: apartmentReducer }),
-    EffectsModule.forRoot([ApartmentEffect])
+    EffectsModule.forRoot([ApartmentEffect]),
+    StoreDevtoolsModule.instrument({
+      maxAge : 25,
+      logOnly : false
+    })
   ],
   providers: [ApartmentserviceService],
   bootstrap: [AppComponent]

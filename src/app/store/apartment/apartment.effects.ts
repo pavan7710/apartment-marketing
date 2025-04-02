@@ -18,7 +18,11 @@ export class ApartmentEffect {
             ofType(loadApartments),
             tap(() => console.log('loadApartments action received in effect')),
             mergeMap(() => this.apartmentService.getApartments().pipe(
-                map(response => loadApartmentsSuccess({response})),
+                // map(response => loadApartmentsSuccess({response})),
+                map((response) => {
+                    console.log(response)
+                    return loadApartmentsSuccess( {response} )
+                }),
                 catchError(error => of(loadApartmentsFailure({error})))
             ))
         )
